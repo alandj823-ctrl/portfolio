@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ prosjekt.tittel }} - CV</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css">
+</head>
+
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="/#prosjekter">Hjemsiden</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="prosjekt-detalj">
+            <a href="/" class="tilbake-knapp">← Tilbake</a>
+            
+            <h2>{{ prosjekt.tittel }}</h2>
+
+              {% if prosjekt.hovedbilde %}
+              <img class="prosjekt-hovedbilde"
+                  src="{{ url_for('static', filename='images/' ~ prosjekt.hovedbilde) }}"
+                  alt="{{ prosjekt.tittel }}">
+              {% endif %}
+            
+            <div class="prosjekt-content">
+                <p class="prosjekt-dato">{{ prosjekt.dato }}</p>
+                <p>{{ prosjekt.beskrivelse }}</p>
+
+                {% if prosjekt.mal %}
+                <div class="prosjekt-mal">
+                    {% for del in prosjekt.mal %}
+                    <section class="mal-del">
+                        <h3>{{ del.tittel }}</h3>
+                        <p>{{ del.tekst }}</p>
+                    </section>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                {% if prosjekt.teknologi %}
+                <div class="teknologi">
+                    <h3>Teknologi brukt:</h3>
+                    <ul>
+                        {% for tech in prosjekt.teknologi %}
+                        <li>{{ tech }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                     {% if prosjekt.github_lenke %}
+                     <a href="{{ prosjekt.github_lenke }}"
+                         target="_blank"
+                         rel="noopener noreferrer"
+                         class="github-button">
+                          Se kildekode på GitHub ↗
+                     </a>
+                     {% endif %}
+                {% endif %}
+                
+                {% if prosjekt.lenke %}
+                <a href="{{ prosjekt.lenke }}" class="button" target="_blank">Se prosjektet</a>
+                {% endif %}
+
+                {% if prosjekt.rapport %}
+                <a href="{{ url_for('static', filename=prosjekt.rapport) }}"
+                   class="button"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Se rapporten som PDF
+                </a>
+                {% endif %}
+
+                {% if prosjekt.presentasjon %}
+                <section class="presentasjon" aria-labelledby="presentasjon-tittel">
+                    <div class="presentasjon-header">
+                        <div>
+                            <p class="section-kicker">Prosjektpresentasjon</p>
+                            <h2 id="presentasjon-tittel">Slik ble solkraftverket prosjektert</h2>
+                            <p>Se gjennom lysbildene direkte på siden, eller åpne presentasjonen i et eget vindu.</p>
+                        </div>
+                        <a class="presentasjon-lenke" href="{{ url_for('static', filename=prosjekt.presentasjon) }}" target="_blank" rel="noopener noreferrer">
+                            Åpne fullskjerm <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                    <div class="presentasjon-ramme">
+                        <iframe
+                            src="{{ url_for('static', filename=prosjekt.presentasjon) }}#view=FitH"
+                            title="Presentasjon av prosjektering av solkraftverk"
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <a class="presentasjon-nedlasting" href="{{ url_for('static', filename=prosjekt.presentasjon) }}" download>
+                        Last ned presentasjonen som PDF
+                    </a>
+                </section>
+                {% endif %}
+
+                {% if prosjekt.dataflyt %}
+                <section class="dataflyt" aria-labelledby="dataflyt-tittel">
+                    <div class="dataflyt-header">
+                        <p class="section-kicker">Metode</p>
+                        <h2 id="dataflyt-tittel">Datainnsamling via API</h2>
+                        <p>Fra rå værdata til et ferdig analysegrunnlag.</p>
+                    </div>
+
+                    <div class="dataflyt-steg">
+                        {% for steg in prosjekt.dataflyt %}
+                        <div class="flytsteg">
+                            <span class="nummer">{{ "%02d"|format(loop.index) }}</span>
+                            <div>
+                                <h3>{{ steg.navn }}</h3>
+                                <p>{{ steg.detalj }}</p>
+                            </div>
+                        </div>
+                        {% if not loop.last %}
+                        <span class="flytpil" aria-hidden="true">&#8594;</span>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <div class="dataflyt-forklaring">
+                        <p>
+                            Prosjektet henter værdata fra et API som JSON, gjør responsen om til en
+                            Pandas DataFrame og behandler deretter verdiene før analyse, prediksjon og visualisering.
+                        </p>
+                        <button class="kodeknapp" type="button" aria-expanded="false">
+                            <span>Vis kode</span>
+                            <span class="kodepil" aria-hidden="true">&#8595;</span>
+                        </button>
+                        <div class="kodepanel" aria-hidden="true">
+                            <div class="koderamme">
+                                <div class="kodeheader"><span>api_data.py</span><span>Python</span></div>
+                                <div class="kodescroll"><pre><code class="language-python">{{ prosjekt.api_kode }}</code></pre></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {% endif %}
+
+                {% if prosjekt.bilder %}
+                <section class="prosjekt-bilder" aria-labelledby="bilder-tittel">
+                    <div class="prosjekt-bilder-header">
+                        <p class="section-kicker">Resultater</p>
+                        <h2 id="bilder-tittel">Fra analysen</h2>
+                        <p>{{ prosjekt.bilder_intro or 'Et utvalg visualiseringer fra prosjektet.' }}</p>
+                    </div>
+
+                    <div class="bildegalleri">
+                        {% for bilde in prosjekt.bilder %}
+                        <article class="bildekort">
+                            <img src="{{ url_for('static', filename=(bilde.mappe or 'images/') ~ bilde.fil) }}" alt="{{ bilde.tittel }}">
+                            <div class="bildeinfo">
+                                <h3>{{ bilde.tittel }}</h3>
+                                <p>{{ bilde.beskrivelse }}</p>
+                                {% if bilde.kode %}
+                                <button class="kodeknapp" type="button" aria-expanded="false">
+                                    <span>Vis kode</span>
+                                    <span class="kodepil" aria-hidden="true">&#8595;</span>
+                                </button>
+                                <div class="kodepanel" aria-hidden="true">
+                                    <div class="koderamme">
+                                        <div class="kodeheader"><span>analyse.py</span><span>Python</span></div>
+                                        <div class="kodescroll"><pre><code class="language-python">{{ bilde.kode }}</code></pre></div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling DOWN
+                header.classList.add('hide');
+            } else {
+                // Scrolling UP
+                header.classList.remove('hide');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script>
+        document.querySelectorAll('.kodeknapp').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const panel = button.nextElementSibling;
+                const isOpen = button.getAttribute('aria-expanded') === 'true';
+                button.setAttribute('aria-expanded', String(!isOpen));
+                button.querySelector('span').textContent = isOpen ? 'Vis kode' : 'Skjul kode';
+                panel.setAttribute('aria-hidden', String(isOpen));
+                panel.style.maxHeight = isOpen ? '0px' : panel.scrollHeight + 'px';
+            });
+        });
+    </script>
+</body>
+</html>

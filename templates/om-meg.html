@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aland Jamal | Portfolio</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="/#prosjekter">Hjemsiden</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cv-section" aria-labelledby="cv-title">
+            <div class="cv-container">
+                <h1 id="cv-title">Aland Jamal | Portfolio</h1>
+                <a
+                    class="button pdf-button"
+                    href="{{ url_for('static', filename='CV.pdf') }}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Se CV som PDF
+                </a>
+
+                <section class="cv-part">
+                    <h2>Profil</h2>
+                    <p class="cv-text">
+                        Jeg studerer energi og miljø ved NTNU og er interessert i teknologi,
+                        dataanalyse og bærekraftige løsninger.
+                    </p>
+                </section>
+
+                <section class="cv-part" id="erfaring">
+                    <h2>Erfaring</h2>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Læringsassistent</h3>
+                            <span class="cv-date">2025 09 - 2026 01</span>
+                        </div>
+                        <img
+                            class="cv-logo cv-logo-ntnu"
+                            src="{{ url_for('static', filename='images/ntnu_alt_versjon_uten_slagord.png') }}"
+                            alt="NTNU-logo">
+                        <p class="cv-description">
+                            Fasiliterte tverrfaglige studentgrupper med fokus på samarbeid, gruppeprosesser
+                            og refleksjon. Observerte teamdynamikk og stilte åpne, utviklende spørsmål for å
+                            styrke læring og samhandling. Samarbeidet tett med andre læringsassistenter og
+                            fagansvarlige.
+                        </p>
+                    </div>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Mentor innen Matematikk og fysikk</h3>
+                            <span class="cv-date">Mar 2023 - D.D</span>
+                        </div>
+                        <img
+                            class="cv-logo .cv-logo-mentornorge"
+                            src="{{ url_for('static', filename='images/0x0.png') }}"
+                            alt="MentorNorge-logo">
+                        <p class="cv-company">MentorNorge</p>
+                        <p class="cv-description">
+                            Veiledet og fulgt opp 5 elever i matematikk og fysikk på videregående nivå
+                            (1T/R1/R2/Fysikk 1 – 2). Tilpasset undervisningen individuelt basert på elevenes
+                            faglige nivå, mål og læringsstil. Planla og gjennomførte undervisningsøkter med
+                            fokus på eksamensforberedelse og problemløsning. Bygget gode relasjoner med
+                            elever og foresatte gjennom tydelig kommunikasjon og oppfølging.
+                        </p>
+                    </div>
+
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Mentor i ENT3R(Stem Pluss) leksehjelp i matte og realfag</h3>
+                            <span class="cv-date">Aug 2026 - D.D</span>
+                        </div>
+                        <img
+                            class="cv-logo .cv-logo-mentornorge"
+                            src="{{ url_for('static', filename='images/unnamed.png') }}"
+                            alt="MentorNorge-logo">
+                        <p class="cv-description">
+                            Leksehjelp i matte og realfag for elever i ENT3R.
+                        </p>
+                    </div>
+                    
+                </section>
+
+                <section class="cv-part" id="erfaring">
+                    <h2>Verv</h2>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Arrangementansvarlig</h3>
+                            <span class="cv-date">2025 01 - 2026 01</span>
+                        </div>
+                        <img
+                            class="cv-logo cv-logo-energi"
+                            src="{{ url_for('static', filename='images/logo.webp') }}"
+                            alt="Energi og miljø-logo">
+                        <p class="cv-company">Energi og miljø</p>
+                        <p class="cv-description">
+                            Leder for arrangementskomiteen med ansvar for planlegging og gjennomføring av
+                            arrangementer.
+                            Planlegging, koordinering og gjennomføring av sosiale og faglige arrangementer
+                            for over 600 medlemmer.
+                            Budsjett- og ressursstyring i samarbeid med resten av hovedstyret. Samarbeid med
+                            eksterne partnere og sponsorer.
+                            Sikret profesjonell gjennomføring med fokus på inkludering, trivsel og
+                            engasjement.
+                        </p>
+                    </div>
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Politisk leder & Studentkontakt</h3>
+                            <span class="cv-date">Aug 2025 - D.D</span>
+                        </div>
+                        <img
+                            class="cv-logo cv-logo-tekna"
+                            src="{{ url_for('static', filename='images/Tekna Logo.webp') }}"
+                            alt="Tekna-logo">
+                        <p class="cv-company">Tekna</p>
+                        <p class="cv-description">
+                            Representerer studentenes interesser i Tekna, Norges største fagforening for
+                            teknologer og realister. Deltar i politiske diskusjoner og beslutningsprosesser
+                            som påvirker studentenes utdanning og fremtidige karrieremuligheter.
+                            Samarbeider med andre studentrepresentanter, fagforeninger og utdanningsinstitusjoner
+                            for å fremme studentenes stemme og behov.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="cv-part">
+                    <h2>Utdanning</h2>
+                    <img
+                            class="cv-logo cv-logo-ntnu"
+                            src="{{ url_for('static', filename='images/ntnu_alt_versjon_uten_slagord.png') }}"
+                            alt="NTNU-logo">
+                    <div class="cv-item">
+                        <div class="cv-item-header">
+                            <h3>Energi og miljø - elektrisk energiteknikk og smarte nett</h3>
+                            <span class="cv-date">2024 - D.D</span>
+                        </div>
+                        <p class="cv-description">
+                            Energi og miljø er viten om energiproduksjon/-bruk og relaterte miljøbetingelser/-konsekvenser, og dermed er sentral menneskets arbeid med å nå FNs bærekraftsmål. Fagfeltet omfatter både grunnleggende og anvendte elementer: Grunnleggende: naturvitenskap som miljøfysikk, miljøkjemi, biologi og helse
+                        </p>
+                    </div>
+                </section>
+
+                <section class="cv-part">
+                    <h2>Relevante emner</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Kretsanalyse</span>
+                        <span class="skill-tag">Elektromagnetisme</span>
+                        <span class="skill-tag">Reguleringsteknikk</span>
+                        <span class="skill-tag">Fluidmekanikk</span>
+                        <span class="skill-tag">Programmering</span>
+                        <span class="skill-tag">Høyspenning</span>
+                        <span class="skill-tag">Elektrisk kraftsystem</span>
+                        <span class="skill-tag">Matte 1,2,3,4</span>
+                        <span class="skill-tag">Teknologiledelse</span>
+                        <span class="skill-tag">Numerisk elektromagnetisme</span>
+                    </div>
+                </section>
+
+                <section class="cv-part">
+                    <h2>Ferdigheter</h2>
+                    <div class="skills-grid">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">fysikk</span>
+                        <span class="skill-tag">MatLab</span>
+                        <span class="skill-tag">Matte</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">SimuLink</span>
+                        <span class="skill-tag">Comsol</span>
+                    </div>
+                </section>
+
+                <section class="cv-part">
+                    <h2>Kontakt</h2>
+                    <div class="contact-info">
+                        <p><strong>E-post:</strong> <a href="mailto:alandj823@gmail.com">alandj823@gmail.com</a></p>
+                        <p><strong>Telefon:</strong> +47 483 86 955</p>
+                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alandjamal" target="_blank">linkedin.com/in/alandjamal</a></p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling DOWN
+                header.classList.add('hide');
+            } else {
+                // Scrolling UP
+                header.classList.remove('hide');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    background-color: #F8FAFC;
+    color: black;
+    text-align: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px 10%;
+
+    background: linear-gradient(
+        135deg,
+        #0F172A,
+        #1E3A8A
+    );
+
+    color: white;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+header.hide {
+    transform: translateY(-100%);
+}
+
+h1 {
+    color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    transform: scale(1.15);
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.profil {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profil-info {
+    flex: 1;
+    text-align: left;
+    padding-right: 40px;
+}
+
+.profil-info h2 {
+    font-size: 32px;
+    color: #1E3A8A;
+    margin: 0 0 10px 0;
+}
+
+.profil-info .utdanning {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.profil-info .skole {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0 20px 0;
+}
+
+.kontakt-info {
+    margin-top: 30px;
+}
+
+.kontakt-info h3 {
+    color: #1E3A8A;
+    margin-bottom: 15px;
+}
+
+.kontakt-info p {
+    margin: 8px 0;
+    color: #333;
+}
+
+.kontakt-info a {
+    color: #1E3A8A;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.kontakt-info a:hover {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+.profil-bilde {
+    flex: 1;
+    text-align: center;
+}
+
+.profil-bilde img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .profil {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .profil-info {
+        padding-right: 0;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .profil-bilde img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 100%;
+    transition: transform 0.3s ease;
+}
+
+#prosjekter {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+#prosjekter > h2 {
+    grid-column: 1 / -1;
+}
+
+.project-link:hover {
+    transform: scale(1.05);
+}
+
+.project {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.project:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project h3 {
+    margin-top: 0;
+    color: #1E3A8A;
+}
+
+.prosjekt-detalj {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.prosjekt-hovedbilde {
+    display: block;
+    width: 100%;
+    max-height: 520px;
+    margin: 0 0 24px;
+    object-fit: contain;
+    background: #eef2f7;
+    border-radius: 8px;
+}
+
+.tilbake-knapp {
+    display: inline-block;
+    color: #1E3A8A;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.tilbake-knapp:hover {
+    color: #0F172A;
+    transform: translateX(-5px);
+}
+
+.prosjekt-content {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.prosjekt-content h2 {
+    color: #1E3A8A;
+    margin-top: 0;
+}
+
+.presentasjon {
+    margin-top: 45px;
+    padding-top: 32px;
+    border-top: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.presentasjon-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.presentasjon-header h2 {
+    margin: 5px 0 8px;
+}
+
+.presentasjon-header p:last-child {
+    max-width: 520px;
+    margin: 0;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+.presentasjon-lenke,
+.presentasjon-nedlasting {
+    color: #1E3A8A;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.presentasjon-lenke:hover,
+.presentasjon-nedlasting:hover {
+    color: #0F172A;
+    text-decoration: underline;
+}
+
+.presentasjon-ramme {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    margin-top: 24px;
+    border: 10px solid #0f172a;
+    border-radius: 8px;
+    background: #0f172a;
+    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.2);
+}
+
+.presentasjon-ramme::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+    background: #f59e0b;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.presentasjon-ramme iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: white;
+}
+
+.presentasjon-nedlasting {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.prosjekt-bilder {
+    margin-top: 45px;
+    padding-top: 32px;
+    border-top: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.dataflyt {
+    margin-top: 45px;
+    padding-top: 32px;
+    border-top: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.dataflyt-header h2 {
+    margin: 5px 0 8px;
+}
+
+.dataflyt-header > p:last-child {
+    color: #64748b;
+    margin-top: 0;
+}
+
+.dataflyt-steg {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.flytsteg {
+    display: flex;
+    flex: 1;
+    gap: 10px;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 15px;
+    background: #f8fafc;
+    border: 1px solid #dbe4ef;
+    border-radius: 7px;
+}
+
+.flytsteg h3 {
+    margin: 0 0 5px;
+    color: #1E3A8A;
+    font-size: 15px;
+}
+
+.flytsteg p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.nummer {
+    display: inline-grid;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: #1e3a8a;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.flytpil {
+    align-self: center;
+    color: #94a3b8;
+    font-size: 20px;
+}
+
+.dataflyt-forklaring {
+    margin-top: 24px;
+    padding: 20px;
+    border-left: 4px solid #1e3a8a;
+    background: #f8fafc;
+}
+
+.dataflyt-forklaring > p {
+    margin: 0 0 15px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.prosjekt-bilder-header h2 {
+    margin: 5px 0 8px;
+}
+
+.prosjekt-bilder-header > p:last-child {
+    color: #64748b;
+    margin-top: 0;
+}
+
+.section-kicker {
+    margin: 0;
+    color: #1E3A8A;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.bildegalleri {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 25px;
+}
+
+.bildekort {
+    overflow: hidden;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.bildekort > img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #eef2f7;
+}
+
+.bildeinfo {
+    padding: 20px;
+}
+
+.bildeinfo h3 {
+    margin: 0 0 8px;
+    color: #1E3A8A;
+}
+
+.bildeinfo p {
+    margin: 0 0 16px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.kodeknapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+    border-radius: 5px;
+    padding: 10px 15px;
+    background: #0f172a;
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.kodeknapp:hover {
+    background: #1e3a8a;
+    transform: translateY(-1px);
+}
+
+.kodepil {
+    font-size: 17px;
+    transition: transform 0.25s ease;
+}
+
+.kodeknapp[aria-expanded="true"] .kodepil {
+    transform: rotate(180deg);
+}
+
+.kodepanel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.koderamme {
+    overflow: hidden;
+    margin-top: 16px;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    background: #272822;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+}
+
+.kodeheader {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 13px;
+    background: #1f2937;
+    color: #94a3b8;
+    font-family: Consolas, monospace;
+    font-size: 12px;
+}
+
+.kodescroll {
+    max-height: 420px;
+    overflow: auto;
+}
+
+.koderamme pre {
+    margin: 0;
+    padding: 16px;
+    background: #272822;
+    text-align: left;
+    white-space: pre;
+}
+
+.koderamme code {
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.prosjekt-dato {
+    color: #666;
+    font-style: italic;
+    margin-top: 0;
+}
+
+.prosjekt-mal {
+    margin-top: 35px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.mal-del {
+    padding: 24px 0;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.mal-del:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.mal-del h3 {
+    margin: 0 0 10px;
+    color: #1E3A8A;
+}
+
+.mal-del p {
+    margin: 0;
+    color: #333;
+    line-height: 1.7;
+}
+
+.teknologi {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.teknologi h3 {
+    color: #1E3A8A;
+}
+
+.teknologi ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.teknologi li {
+    background: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 20px;
+    color: #333;
+    font-size: 14px;
+}
+
+.button {
+    display: inline-block;
+    background: linear-gradient(
+        135deg,
+        #0F172A,
+        #1E3A8A
+    );
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.3);
+}
+
+/* CV Styles */
+.cv-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.cv-container h1 {
+    color: #1E3A8A;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.pdf-button {
+    margin: 0 auto 30px;
+}
+
+@media (max-width: 768px) {
+    .cv-section {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .cv-container h1 {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+}
+
+.cv-part {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cv-part h2 {
+    color: #1E3A8A;
+    border-bottom: 3px solid #1E3A8A;
+    padding-bottom: 15px;
+    margin-top: 0;
+}
+
+.cv-text {
+    color: #333;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.cv-item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.cv-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.cv-logo {
+    display: block;
+    width: auto;
+    height: 58px;
+    max-width: 190px;
+    margin: 12px auto 10px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.cv-logo-ntnu {
+    height: 70px;
+    max-width: 120px;
+}
+
+.cv-logo-mentornorge {
+    height: 70px;
+    max-width: 120px;
+}
+
+.cv-logo-energi {
+    height: 58px;
+    max-width: 180px;
+}
+
+.cv-logo-tekna {
+    height: 52px;
+    max-width: 190px;
+}
+
+.cv-item h3 {
+    color: #1E3A8A;
+    margin: 0;
+    font-size: 20px;
+}
+
+.cv-date {
+    color: #666;
+    font-style: italic;
+    font-size: 14px;
+    background: #f0f0f0;
+    padding: 4px 12px;
+    border-radius: 15px;
+}
+
+.cv-company {
+    color: #555;
+    font-weight: 600;
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.cv-description {
+    color: #333;
+    line-height: 1.6;
+    margin: 10px 0 0 0;
+    font-size: 15px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.skill-tag {
+    background: linear-gradient(
+        135deg,
+        #0F172A,
+        #1E3A8A
+    );
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2);
+}
+
+.skill-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.3);
+}
+
+.contact-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.contact-info p {
+    margin: 12px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.contact-info a {
+    color: #1E3A8A;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #FFD700;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    #prosjekter {
+        grid-template-columns: 1fr;
+    }
+
+    .cv-section {
+        padding: 10px;
+    }
+    
+    .cv-part {
+        padding: 20px;
+    }
+
+    .prosjekt-detalj {
+        padding: 12px;
+    }
+
+    .prosjekt-content {
+        padding: 20px;
+    }
+
+    .presentasjon-header {
+        display: block;
+    }
+
+    .presentasjon-lenke {
+        display: inline-block;
+        margin-top: 16px;
+    }
+
+    .presentasjon-ramme {
+        border-width: 6px;
+    }
+
+    .bildegalleri {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .dataflyt-steg {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .flytpil {
+        align-self: center;
+        transform: rotate(90deg);
+    }
+
+    .bildeinfo {
+        padding: 16px;
+    }
+    
+    .cv-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cv-logo {
+        max-width: 160px;
+    }
+    
+    .cv-date {
+        margin-top: 8px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+}

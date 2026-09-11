@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Aland Jamal | Energi og miljø</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header id="header">
+        <nav>
+            <a href="/om-meg#erfaring">CV</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="profil">
+            <div class="profil-bilde">
+                <img src="{{ url_for('static', filename='images/Headshot2.jpg') }}" alt="Profilbilde">
+            </div>
+            <div class="profil-info">
+                <h2>Aland Jamal</h2>
+                <p class="utdanning">Energi og miljø</p>
+                <p class="skole">NTNU</p>
+                
+                <div class="kontakt-info">
+                    <h3>Kontaktinformasjon</h3>
+                    <p><strong>E-post:</strong> <a href="mailto:alandj823@gmail.com">alandj823@gmail.com</a></p>
+                    <p><strong>Telefon:</strong> +47 483 86 955</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alandjamal" target="_blank">linkedin.com/in/alandjamal</a></p>
+                </div>
+            </div>
+            
+            
+        </section>
+
+        <section id="prosjekter">
+            <h2>Prosjekter</h2>
+
+            <a href="/prosjekt/mitt-forste-prosjekt" class="project-link">
+                <div class="project">
+                    <h3>Min egen nettside</h3>
+                    <p>En personlig nettside utviklet for å lære webutvikling og bygge en digital portefølje.</p>
+                </div>
+            </a>
+
+            <a href="/prosjekt/python-prosjekt" class="project-link">
+                <div class="project">
+                    <h3>Miljødataanalyseapplikasjon</h3>
+                    <p>En applikasjon for å analysere og visualisere miljødata ved hjelp av Python og dataanalyseverktøy.</p>
+                </div>
+            </a>
+            <a href="/prosjekt/regulering-av-temperatur-i-reaktorkjerne" class="project-link">
+                <div class="project">
+                    <h3>Regulering av temperatur i reaktorkjerne</h3>
+                    <p>utviklet og analysert en
+                       matematisk modell for temperaturregulering i en reaktorkjerne
+                       i et tenkt fisjonskraftverk.</p>
+                </div>
+            </a>
+            <a href="/prosjekt/prosjektering-av-solkraftverk" class="project-link">
+                <div class="project">
+                    <h3>Prosjektering av solkraftverk</h3>
+                    <p>Et prosjektarbeid med prosjektering og vurdering av et solkraftverk.</p>
+                </div>
+            </a>
+
+            <a href="/prosjekt/co2-fangst" class="project-link">
+                <div class="project">
+                    <h3>CO2-fangst</h3>
+                    <p>Et prosjektarbeid med fokus på utvikling og testing av metoder for å fange og lagre CO2. </p>
+                </div>
+            </a>
+
+            <a href="/prosjekt/nullutslippsomrade-flyplassutvikling-bodo" class="project-link">
+                <div class="project">
+                    <h3>Nullutslippsområde, Flyplassutvikling, Bodø</h3>
+                    <p>Et prosjekt om utviklingen av den gamle flyplassen i Bodø til en ny nullutslippsbydel.</p>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling DOWN
+                header.classList.add('hide');
+            } else {
+                // Scrolling UP
+                header.classList.remove('hide');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    </script>
+</body>
+</html>
